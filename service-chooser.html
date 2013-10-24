@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<title>Service Chooser</title>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="css/service-chooser.css" type="text/css"/>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
+		<script src="js/service-chooser.js"></script>
+	</head>
+
+	<body>
+		<form ng-app ng-controller="ServiceChooserController">
+			<h1>Services</h1>
+			<ul>
+				<li ng-repeat="service in services" ng-click="toggleActive(service)" ng-class="{active:service.active}">
+			<!-- Notice the use of the currency filter, it will format the price -->
+				{{service.name}} <span>{{service.price | currency}}</span>
+				</li>
+				
+			</ul>
+			
+			<div class="total">
+			<!-- Calculate the total price of all chosen services. Format it as currency. -->
+				Total: <span>{{total() | currency}}</span>
+			</div>
+		</form>
+	</body>
+</html>
